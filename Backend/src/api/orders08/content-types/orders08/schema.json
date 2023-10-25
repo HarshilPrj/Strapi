@@ -4,7 +4,8 @@
   "info": {
     "singularName": "orders08",
     "pluralName": "orders",
-    "displayName": "Orders"
+    "displayName": "Orders",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,10 +14,6 @@
   "attributes": {
     "email": {
       "type": "email",
-      "required": true
-    },
-    "orderId": {
-      "type": "uid",
       "required": true
     },
     "payment_info": {
@@ -47,6 +44,10 @@
       "type": "string",
       "required": true,
       "default": "Pending"
+    },
+    "orderId": {
+      "type": "string",
+      "required": true
     }
   }
 }

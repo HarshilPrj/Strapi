@@ -683,13 +683,13 @@ export interface ApiOrders08Orders08 extends Schema.CollectionType {
     singularName: 'orders08';
     pluralName: 'orders';
     displayName: 'Orders';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     email: Attribute.Email & Attribute.Required;
-    orderId: Attribute.UID & Attribute.Required;
     payment_info: Attribute.JSON & Attribute.Required;
     products: Attribute.JSON & Attribute.Required;
     address: Attribute.Text & Attribute.Required;
@@ -699,6 +699,7 @@ export interface ApiOrders08Orders08 extends Schema.CollectionType {
     status: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'Pending'>;
+    orderId: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -758,7 +759,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     > &
       Attribute.Required;
     price: Attribute.Integer & Attribute.Required;
-    Oty: Attribute.Integer & Attribute.Required;
+    qty: Attribute.Integer & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

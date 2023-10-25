@@ -1,19 +1,21 @@
 "use client";
 
+import AppContext from "@/Context/context";
 import axios from "axios";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Product({ params }) {
     const [data, setData] = useState([]);
+    const [like, setLike] = useState(false);
+
+    let context = useContext(AppContext);
     useEffect(() => {
         axios
             .get(
                 `${process.env.NEXT_PUBLIC_HOST}/api/products/${params.product}?populate=*`
             )
             .then((data) => {
-                console.log(data.data.data);
-                console.log(data.data.data.attributes.image.data.attributes.url);
                 setData(data.data.data);
             })
             .catch((error) => {
@@ -31,6 +33,10 @@ export default function Product({ params }) {
         }
     };
 
+    const handleLikeColor = () => {
+        return like === true ? "text-red-500" : "text-gray-500";
+    };
+
     return (
         <div>
             <section className="text-gray-600 body-font overflow-hidden">
@@ -43,7 +49,7 @@ export default function Product({ params }) {
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <img
                             alt="ecommerce"
-                            className="lg:w-1/2 w-full lg:h-auto object-cover object-center rounded"
+                            className="lg:w-1/2 w-full lg:h-auto rounded"
                             src={`${process.env.NEXT_PUBLIC_HOST}${data.attributes?.image?.data?.attributes.url}`}
                         />
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -113,7 +119,7 @@ export default function Product({ params }) {
                                     <span className="text-gray-600 ml-3">4 Reviews</span>
                                 </span>
                                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                                    <a className="text-gray-500">
+                                    <a className="text-blue-500">
                                         <svg
                                             fill="currentColor"
                                             strokeLinecap="round"
@@ -125,7 +131,7 @@ export default function Product({ params }) {
                                             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                                         </svg>
                                     </a>
-                                    <a className="text-gray-500">
+                                    <a className="text-blue-500">
                                         <svg
                                             fill="currentColor"
                                             strokeLinecap="round"
@@ -137,7 +143,7 @@ export default function Product({ params }) {
                                             <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
                                         </svg>
                                     </a>
-                                    <a className="text-gray-500">
+                                    <a className="text-green-500">
                                         <svg
                                             fill="currentColor"
                                             strokeLinecap="round"
@@ -152,7 +158,7 @@ export default function Product({ params }) {
                                 </span>
                             </div>
                             <p className="leading-relaxed">
-                                {data.attributes?.description}
+                                {data.attributes?.description || "N/A"}
                             </p>
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                 <div className="flex">
@@ -195,10 +201,26 @@ export default function Product({ params }) {
                                         currency: "INR",
                                     })}
                                 </span>
-                                <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                                <button
+                                    onClick={() => {
+                                        context.addToCart(data);
+                                    }}
+                                    className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="mr-2 h-5 w-5"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                                    </svg>
                                     Add To Cart
                                 </button>
-                                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                                <button
+                                    className={`rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center ${handleLikeColor()} ml-4`}
+                                    onClick={() => setLike(like === true ? false : true)}
+                                >
                                     <svg
                                         fill="currentColor"
                                         strokeLinecap="round"

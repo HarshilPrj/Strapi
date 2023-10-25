@@ -9,7 +9,6 @@ const products = () => {
         axios
             .get(`${process.env.NEXT_PUBLIC_HOST}/api/products?populate=*`)
             .then((data) => {
-                console.log(data.data.data);
                 setData(data.data.data);
             })
             .catch((error) => {
@@ -36,7 +35,7 @@ const products = () => {
                                 <div className="bg-gray-100 p-6 rounded-lg">
                                     <img
                                         className="h-64 rounded w-auto mb-8 m-auto"
-                                        src={`${process.env.NEXT_PUBLIC_HOST}${item.attributes.image.data.attributes.url}`}
+                                        src={`${process.env.NEXT_PUBLIC_HOST}${item.attributes?.image?.data?.attributes.url}`}
                                         alt="content"
                                     />
                                     <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
@@ -45,7 +44,6 @@ const products = () => {
                                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
                                         {item.attributes.category}
                                     </h2>
-                                    <div className="bg-black bg-green-500 bg-blue-500 bg-white"></div>
                                     <button
                                         className={`border-2 border-gray-300 ml-1 ${handleChangeColor()} rounded-full w-6 h-6 focus:outline-none`}
                                     ></button>
