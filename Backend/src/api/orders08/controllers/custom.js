@@ -113,25 +113,24 @@ module.exports = createCoreController(
     async postTransaction(ctx) {
       try {
         let params = ctx.request.body;
-        console.log(params);
 
-        // const entries = await strapi.entityService.findMany(
-        //   "api::orders08.orders08",
-        //   {
-        //     fields: ["id"],
-        //     filters: { orderId: params.ORDERID },
-        //   }
-        // );
+        const entries = await strapi.entityService.findMany(
+          "api::orders08.orders08",
+          {
+            fields: ["id"],
+            filters: { orderId: params.ORDERID },
+          }
+        );
 
-        // const id = entries[0].id;
+        const id = entries[0].id;
 
-        // await strapi.entityService.update("api::orders08.orders08", id, {
-        //   data: {
-        //     transections_id: params.TXNID,
-        //     payment_info: params,
-        //     status: params.STATUS,
-        //   },
-        // });
+        await strapi.entityService.update("api::orders08.orders08", id, {
+          data: {
+            transections_id: params.TXNID,
+            payment_info: params,
+            status: params.STATUS,
+          },
+        });
 
         ctx.redirect("http://localhost:3000/success");
       } catch (error) {
