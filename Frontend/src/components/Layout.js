@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
         newCart.push(item);
 
         setCart(newCart);
+        localStorage.setItem("cart", JSON.stringify(newCart));
         setReloadKey(Math.random());
     };
 
@@ -20,6 +21,7 @@ const Layout = ({ children }) => {
         const newCart = [...cart];
         newCart.splice(index, 1);
         setCart(newCart);
+        localStorage.setItem("cart", JSON.stringify(newCart));
         setReloadKey(Math.random());
     };
 

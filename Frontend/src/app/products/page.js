@@ -39,11 +39,12 @@ const products = () => {
                                         alt="content"
                                     />
                                     <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                                        {item.attributes.title}
+                                        {item.attributes.category}
                                     </h3>
                                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                                        {item.attributes.category}
+                                        {`${item.attributes.title.slice(0, 30)}...`}
                                     </h2>
+                                    <div className="bg-blue-500 bg-green-500"></div>
                                     <button
                                         className={`border-2 border-gray-300 ml-1 ${handleChangeColor()} rounded-full w-6 h-6 focus:outline-none`}
                                     ></button>

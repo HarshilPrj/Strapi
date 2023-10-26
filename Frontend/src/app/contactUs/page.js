@@ -2,138 +2,64 @@ import React from "react";
 
 const contactUs = () => {
     return (
-        <section className="text-gray-600 body-font relative">
-            <div className="container px-5 py-24 mx-auto">
-                <div className="flex flex-col text-center w-full mb-12">
-                    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                        Contact Us
-                    </h1>
-                    <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                        Contact Us at ShopXpress for any inquiries, feedback, or
-                        assistance. Our dedicated team is here to help you promptly. We
-                        value your input.
+        <section className="bg-gray-100">
+            <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+                <div className="max-w-2xl lg:max-w-4xl mx-auto text-center">
+                    <h2 className="text-3xl font-extrabold text-gray-900">
+                        Visit Our Location
+                    </h2>
+                    <p className="mt-4 text-lg text-gray-500">
+                        ShopXpress, your premier destination for online shopping, offers a
+                        diverse range of products, exceptional customer service, and
+                        seamless shopping experiences
                     </p>
                 </div>
-                <div className="lg:w-1/2 md:w-2/3 mx-auto">
-                    <div className="flex flex-wrap -m-2">
-                        <div className="p-2 w-1/2">
-                            <div className="relative">
-                                <label
-                                    htmlFor="name"
-                                    className="leading-7 text-sm text-gray-600"
-                                >
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                />
+                <div className="mt-16 lg:mt-20">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="rounded-lg overflow-hidden">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11672.945750644447!2d-122.42107853750231!3d37.7730507907087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858070cc2fbd55%3A0xa71491d736f62d5c!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1619524992238!5m2!1sen!2sus"
+                                width="100%"
+                                height="480"
+                                allowfullscreen=""
+                                loading="lazy"
+                            ></iframe>
+                        </div>
+                        <div>
+                            <div className="max-w-full mx-auto rounded-lg overflow-hidden">
+                                <div className="px-6 py-4">
+                                    <h3 className="text-lg font-medium text-gray-900">
+                                        Our Address
+                                    </h3>
+                                    <p className="mt-1 text-gray-600">
+                                        401-413, One World West Ambali T junction, Bopal,
+                                        Ahmedabad, Gujarat 380058
+                                    </p>
+                                </div>
+                                <div className="border-t border-gray-200 px-6 py-4">
+                                    <h3 className="text-lg font-medium text-gray-900">
+                                        Hours
+                                    </h3>
+                                    <p className="mt-1 text-gray-600">
+                                        Monday - Friday: 9am - 5pm
+                                    </p>
+                                    <p className="mt-1 text-gray-600">
+                                        Saturday: 10am - 4pm
+                                    </p>
+                                    <p className="mt-1 text-gray-600">Sunday: Closed</p>
+                                </div>
+                                <div className="border-t border-gray-200 px-6 py-4">
+                                    <h3 className="text-lg font-medium text-gray-900">
+                                        Contact
+                                    </h3>
+                                    <p className="mt-1 text-gray-600">
+                                        Email: info@example.com
+                                    </p>
+                                    <p className="mt-1 text-gray-600">
+                                        Phone: +1 23494 34993
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="p-2 w-1/2">
-                            <div className="relative">
-                                <label
-                                    htmlFor="email"
-                                    className="leading-7 text-sm text-gray-600"
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                />
-                            </div>
-                        </div>
-                        <div className="p-2 w-full">
-                            <div className="relative">
-                                <label
-                                    htmlFor="message"
-                                    className="leading-7 text-sm text-gray-600"
-                                >
-                                    Message
-                                </label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-red-500 focus:bg-white focus:ring-2 focus:ring-red-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                                ></textarea>
-                            </div>
-                        </div>
-                        <div className="p-2 w-full">
-                            <button className="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
-                                Save
-                            </button>
-                        </div>
-                        <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                            <a className="text-red-500">prajapatiharshil625@gmail.com</a>
-                            <p className="leading-normal my-5">
-                                49 Smith St.
-                                <br />
-                                Saint Cloud, MN 56301
-                            </p>
-                            <span className="inline-flex">
-                                <a className="text-gray-500">
-                                    <svg
-                                        fill="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="w-5 h-5"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                    </svg>
-                                </a>
-                                <a className="ml-4 text-gray-500">
-                                    <svg
-                                        fill="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="w-5 h-5"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                                    </svg>
-                                </a>
-                                <a className="ml-4 text-gray-500">
-                                    <svg
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="w-5 h-5"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <rect
-                                            width="20"
-                                            height="20"
-                                            x="2"
-                                            y="2"
-                                            rx="5"
-                                            ry="5"
-                                        ></rect>
-                                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                                    </svg>
-                                </a>
-                                <a className="ml-4 text-gray-500">
-                                    <svg
-                                        fill="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="w-5 h-5"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                                    </svg>
-                                </a>
-                            </span>
                         </div>
                     </div>
                 </div>

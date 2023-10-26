@@ -9,6 +9,10 @@ const checkout = () => {
     let context = useContext(AppContext);
 
     useEffect(() => {
+        if (context.cart.length === 0) {
+            let newcart = localStorage.getItem("cart");
+            context.cart = JSON.parse(newcart);
+        }
         let myTotal = 0;
         for (let index = 0; index < context.cart.length; index++) {
             const element = context.cart[index].attributes?.price;
@@ -17,7 +21,8 @@ const checkout = () => {
         setSubtotal(myTotal);
     }, [context.cart]);
 
-    let grandTotal = subtotal + 20;
+    let shipping = subtotal === 0 ? 0 : 20 * context.cart.length;
+    let grandTotal = subtotal + shipping;
 
     const submit = async () => {
         let orderId = "OID" + Math.floor(1000000 * Math.random());
@@ -88,7 +93,7 @@ const checkout = () => {
                         <div className="px-4 py-6 sm:px-8 sm:py-10">
                             <div className="flow-root">
                                 <ul className="-my-8">
-                                    {context.cart.map((item, index) => {
+                                    {context?.cart?.map((item, index) => {
                                         return (
                                             <li
                                                 key={index}
@@ -175,9 +180,11 @@ const checkout = () => {
                                     </p>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p className="text-sm text-gray-400">Shipping</p>
+                                    <p className="text-sm text-gray-400">
+                                        Shipping (Per item ₹20)
+                                    </p>
                                     <p className="text-lg font-semibold text-gray-900">
-                                        ₹20.00
+                                        ₹{subtotal !== 0 ? `${shipping}.00` : "0.00"}
                                     </p>
                                 </div>
                             </div>
@@ -197,6 +204,7 @@ const checkout = () => {
 
                             <div className="mt-6 text-center">
                                 <button
+                                    disabled={grandTotal === 0 ? true : false}
                                     onClick={submit}
                                     type="button"
                                     className="group inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"

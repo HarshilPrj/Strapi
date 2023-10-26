@@ -165,6 +165,7 @@ export default function Product({ params }) {
                                     <span className="mr-3">Color</span>
                                     <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
                                     <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                                    <div className="bg-blue-500 bg-green-500"></div>
                                     <button
                                         className={`border-2 border-gray-300 ml-1 ${handleChangeColor()} rounded-full w-6 h-6 focus:outline-none`}
                                     ></button>
