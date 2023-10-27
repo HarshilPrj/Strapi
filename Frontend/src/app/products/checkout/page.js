@@ -1,7 +1,6 @@
 "use client";
 import AppContext from "@/Context/context";
 import axios from "axios";
-import Image from "next/image";
 import Script from "next/script";
 import React, { useContext, useEffect, useState } from "react";
 
@@ -10,12 +9,12 @@ const Checkout = () => {
     let context = useContext(AppContext);
 
     useEffect(() => {
-        if (context.cart.length === 0) {
+        if (context?.cart?.length === 0) {
             let newcart = localStorage.getItem("cart");
             context.cart = JSON.parse(newcart);
         }
         let myTotal = 0;
-        for (let index = 0; index < context.cart.length; index++) {
+        for (let index = 0; index < context?.cart?.length; index++) {
             const element = context.cart[index].attributes?.price;
             myTotal = myTotal + element;
         }
@@ -96,8 +95,8 @@ const Checkout = () => {
                                 <ul className="-my-8">
                                     {context &&
                                         context.cart &&
-                                        context.cart.length > 0 &&
-                                        context.cart.map((item, index) => {
+                                        context.cart?.length > 0 &&
+                                        context?.cart?.map((item, index) => {
                                             return (
                                                 <li
                                                     key={index}

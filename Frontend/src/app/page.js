@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
     return (
         <>
@@ -20,7 +18,7 @@ export default function Home() {
                             <div className="md:p-2 p-1 w-1/2">
                                 <img
                                     alt="gallery"
-                                    className=" object-cover  object-center block"
+                                    className="w-full object-cover h-full object-center block"
                                     src="https://plus.unsplash.com/premium_photo-1664201890375-f8fa405cdb7d?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 />
                             </div>

@@ -1,21 +1,26 @@
 "use client";
 import AppContext from "@/Context/context";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 
 const Header = () => {
+    let router = usePathname();
+
     let context = useContext(AppContext);
     const [data, setData] = useState([]);
-    const [count, setCount] = useState(0);
 
     useEffect(() => {
-        if (context.cart.length === 0) {
+        if (context?.cart?.length === 0) {
             let newcart = localStorage.getItem("cart");
             setData(newcart);
-            setCount(Math.random());
             context.cart = data;
         }
-    }, [count]);
+    }, [context?.cart?.length]);
+
+    const handleColor = (str) => {
+        return router === str ? "text-red-600" : "text-gray-600";
+    };
 
     return (
         <div>
@@ -37,23 +42,29 @@ const Header = () => {
                         <span className="ml-3 text-xl">ShopXpress</span>
                     </a>
                     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                        <Link href="/" className="mr-5 hover:text-red-600">
+                        <Link href="/" className={`mr-5 ${handleColor("/")}`}>
                             Home
                         </Link>
-                        <Link href="/products" className="mr-5 hover:text-red-600">
+                        <Link
+                            href="/products"
+                            className={`mr-5 ${handleColor("/products")}`}
+                        >
                             Products
                         </Link>
-                        <Link href="/about" className="mr-5 hover:text-red-600">
+                        <Link href="/about" className={`mr-5 ${handleColor("/about")}`}>
                             About
                         </Link>
-                        <Link href="/contactUs" className="mr-5 hover:text-red-600">
+                        <Link
+                            href="/contactUs"
+                            className={`mr-5 ${handleColor("/contactUs")}`}
+                        >
                             Contact Us
                         </Link>
                         <Link
                             href="/products/checkout"
-                            className="mr-5 hover:text-red-600"
+                            className={`mr-5 ${handleColor("/products/checkout")}`}
                         >
-                            Cart ({context && context.cart && context.cart.length})
+                            Cart ({context?.cart?.length || 0})
                         </Link>
                     </nav>
                     <Link href={"/login"}>
