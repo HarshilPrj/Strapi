@@ -4,7 +4,7 @@ import axios from "axios";
 import Script from "next/script";
 import React, { useContext, useEffect, useState } from "react";
 
-const checkout = () => {
+const Checkout = () => {
     const [subtotal, setSubtotal] = useState(0);
     let context = useContext(AppContext);
 
@@ -241,4 +241,4 @@ const checkout = () => {
     );
 };
 
-export default checkout;
+export default Checkout;

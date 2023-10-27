@@ -1,3 +1,4 @@
+"use client";
 import AppContext from "@/Context/context";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
@@ -5,14 +6,16 @@ import React, { useContext, useEffect, useState } from "react";
 const Header = () => {
     let context = useContext(AppContext);
     const [data, setData] = useState([]);
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
         if (context.cart.length === 0) {
             let newcart = localStorage.getItem("cart");
             setData(newcart);
+            setCount(Math.random());
             context.cart = data;
         }
-    }, [data]);
+    }, [count]);
 
     return (
         <div>

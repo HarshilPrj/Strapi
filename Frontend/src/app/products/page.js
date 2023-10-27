@@ -1,20 +1,23 @@
 "use client";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const products = () => {
+const Products = () => {
     const [data, setData] = useState([]);
+    const [count, setCount] = useState([]);
     useEffect(() => {
         axios
             .get(`${process.env.NEXT_PUBLIC_HOST}/api/products?populate=*`)
             .then((data) => {
                 setData(data.data.data);
+                setCount(Math.random());
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, [count]);
 
     return (
         <section className="text-gray-600 body-font">
@@ -33,7 +36,7 @@ const products = () => {
                         return (
                             <div className="xl:w-1/4 md:w-1/2 p-4" key={index}>
                                 <div className="bg-gray-100 p-6 rounded-lg">
-                                    <img
+                                    <Image
                                         className="h-64 rounded w-auto mb-8 m-auto"
                                         src={`${process.env.NEXT_PUBLIC_HOST}${item.attributes?.image?.data?.attributes.url}`}
                                         alt="content"
@@ -77,4 +80,4 @@ const products = () => {
     );
 };
 
-export default products;
+export default Products;

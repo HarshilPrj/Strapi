@@ -2,11 +2,13 @@
 
 import AppContext from "@/Context/context";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
 export default function Product({ params }) {
     const [data, setData] = useState([]);
+    const [count, setCount] = useState(0);
     const [like, setLike] = useState(false);
 
     let context = useContext(AppContext);
@@ -17,11 +19,12 @@ export default function Product({ params }) {
             )
             .then((data) => {
                 setData(data.data.data);
+                setCount(Math.random());
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, [count]);
 
     const handleChangeColor = () => {
         if (data.attributes?.colors === "Black") {
@@ -47,7 +50,7 @@ export default function Product({ params }) {
                         </button>
                     </Link>
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        <img
+                        <Image
                             alt="ecommerce"
                             className="lg:w-1/2 w-full lg:h-auto rounded"
                             src={`${process.env.NEXT_PUBLIC_HOST}${data.attributes?.image?.data?.attributes.url}`}

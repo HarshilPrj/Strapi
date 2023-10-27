@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sucess = () => {
+const Success = () => {
     return (
         <div className="min-h-screen">
             <section className="text-gray-600 body-font">
@@ -10,10 +10,10 @@ const Sucess = () => {
                             Your order has been successfully placed.
                         </h1>
                         <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                            Thank you for choosing us! Your order is confirmed, and we're
+                            {`Thank you for choosing us! Your order is confirmed, and we're
                             thrilled to serve you. We'll work diligently to ensure your
                             order is delivered promptly. Your satisfaction is our top
-                            priority. Enjoy your shopping experience!
+                            priority. Enjoy your shopping experience!`}
                         </p>
                     </div>
                 </div>
@@ -22,4 +22,4 @@ const Sucess = () => {
     );
 };
 
-export default Sucess;
+export default Success;
