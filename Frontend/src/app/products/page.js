@@ -6,18 +6,16 @@ import React, { useEffect, useState } from "react";
 
 const Products = () => {
     const [data, setData] = useState([]);
-    const [count, setCount] = useState([]);
     useEffect(() => {
         axios
             .get(`${process.env.NEXT_PUBLIC_HOST}/api/products?populate=*`)
             .then((data) => {
                 setData(data.data.data);
-                setCount(Math.random());
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [count]);
+    }, []);
 
     return (
         <section className="text-gray-600 body-font">

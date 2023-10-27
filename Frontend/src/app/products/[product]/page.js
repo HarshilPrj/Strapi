@@ -8,7 +8,6 @@ import { useContext, useEffect, useState } from "react";
 
 export default function Product({ params }) {
     const [data, setData] = useState([]);
-    const [count, setCount] = useState(0);
     const [like, setLike] = useState(false);
 
     let context = useContext(AppContext);
@@ -19,12 +18,11 @@ export default function Product({ params }) {
             )
             .then((data) => {
                 setData(data.data.data);
-                setCount(Math.random());
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [count]);
+    }, []);
 
     const handleChangeColor = () => {
         if (data.attributes?.colors === "Black") {

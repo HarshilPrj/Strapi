@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
                 />
             </head>
             <body suppressHydrationWarning={true} className={inter.className}>
-                <Layout children={children} />
+                <Layout>{children}</Layout>
             </body>
         </html>
     );
