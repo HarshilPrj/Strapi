@@ -21,7 +21,7 @@ const Products = () => {
         <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-wrap -m-4">
-                    {data.map((item, index) => {
+                    {data?.map((item, index) => {
                         const handleChangeColor = () => {
                             if (item.attributes?.colors === "Black") {
                                 return "bg-black";
