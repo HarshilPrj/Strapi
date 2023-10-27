@@ -50,7 +50,7 @@ export default function Product({ params }) {
                         </button>
                     </Link>
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        <Image
+                        <img
                             alt="ecommerce"
                             className="lg:w-1/2 w-full lg:h-auto rounded"
                             src={`${process.env.NEXT_PUBLIC_HOST}${data.attributes?.image?.data?.attributes.url}`}

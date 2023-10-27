@@ -1,6 +1,7 @@
 "use client";
 import AppContext from "@/Context/context";
 import axios from "axios";
+import Image from "next/image";
 import Script from "next/script";
 import React, { useContext, useEffect, useState } from "react";
 

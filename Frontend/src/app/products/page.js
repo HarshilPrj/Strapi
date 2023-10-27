@@ -36,7 +36,7 @@ const Products = () => {
                         return (
                             <div className="xl:w-1/4 md:w-1/2 p-4" key={index}>
                                 <div className="bg-gray-100 p-6 rounded-lg">
-                                    <Image
+                                    <img
                                         className="h-64 rounded w-auto mb-8 m-auto"
                                         src={`${process.env.NEXT_PUBLIC_HOST}${item.attributes?.image?.data?.attributes.url}`}
                                         alt="content"

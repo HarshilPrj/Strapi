@@ -18,59 +18,47 @@ export default function Home() {
                     <div className="flex flex-wrap md:-m-2 -m-1">
                         <div className="flex flex-wrap w-1/2">
                             <div className="md:p-2 p-1 w-1/2">
-                                <Image
-                                    width={0}
-                                    height={0}
+                                <img
                                     alt="gallery"
+                                    className=" object-cover  object-center block"
                                     src="https://plus.unsplash.com/premium_photo-1664201890375-f8fa405cdb7d?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    layout="responsive"
                                 />
                             </div>
                             <div className="md:p-2 p-1 w-1/2">
-                                <Image
-                                    width={0}
-                                    height={0}
+                                <img
                                     alt="gallery"
+                                    className="w-full object-cover h-full object-center block"
                                     src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    layout="responsive"
                                 />
                             </div>
                             <div className="md:p-2 p-1 w-full">
-                                <Image
-                                    width={0}
-                                    height={0}
+                                <img
                                     alt="gallery"
+                                    className="w-full h-full object-cover object-center block"
                                     src="https://plus.unsplash.com/premium_photo-1661774910035-05257f7d73a6?auto=format&fit=crop&q=80&w=2000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    layout="responsive"
                                 />
                             </div>
                         </div>
                         <div className="flex flex-wrap w-1/2">
                             <div className="md:p-2 p-1 w-full">
-                                <Image
-                                    width={0}
-                                    height={0}
+                                <img
                                     alt="gallery"
+                                    className="w-full h-full object-cover object-center block"
                                     src="https://c0.wallpaperflare.com/preview/676/705/125/ecommerce-online-marketing-internet.jpg"
-                                    layout="responsive"
                                 />
                             </div>
                             <div className="md:p-2 p-1 w-1/2">
-                                <Image
-                                    width={0}
-                                    height={0}
+                                <img
                                     alt="gallery"
+                                    className="w-full object-cover h-full object-center block"
                                     src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    layout="responsive"
                                 />
                             </div>
                             <div className="md:p-2 p-1 w-1/2">
-                                <Image
-                                    width={0}
-                                    height={0}
+                                <img
                                     alt="gallery"
+                                    className="w-full object-cover h-full object-center block"
                                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    layout="responsive"
                                 />
                             </div>
                         </div>
