@@ -1,7 +1,15 @@
 {
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/",
+            "dest": "/"
+        },
+        {
+            "src": "/login",
+            "dest": "/"
+        },
+        {
+            "src": "/products",
             "dest": "/"
         }
     ]
