@@ -93,79 +93,86 @@ const checkout = () => {
                         <div className="px-4 py-6 sm:px-8 sm:py-10">
                             <div className="flow-root">
                                 <ul className="-my-8">
-                                    {context?.cart?.map((item, index) => {
-                                        return (
-                                            <li
-                                                key={index}
-                                                className="border-t flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0"
-                                            >
-                                                <div className="shrink-0">
-                                                    <img
-                                                        className="h-24 w-24 max-w-full rounded-lg object-cover"
-                                                        src={`${process.env.NEXT_PUBLIC_HOST}${item.attributes?.image?.data?.attributes.url}`}
-                                                        alt=""
-                                                    />
-                                                </div>
+                                    {context &&
+                                        context.cart &&
+                                        context.cart.length > 0 &&
+                                        context.cart.map((item, index) => {
+                                            return (
+                                                <li
+                                                    key={index}
+                                                    className="border-t flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0"
+                                                >
+                                                    <div className="shrink-0">
+                                                        <img
+                                                            className="h-24 w-24 max-w-full rounded-lg object-cover"
+                                                            src={`${process.env.NEXT_PUBLIC_HOST}${item.attributes?.image?.data?.attributes.url}`}
+                                                            alt=""
+                                                        />
+                                                    </div>
 
-                                                <div className="relative flex flex-1 flex-col justify-between">
-                                                    <div className="sm:col-gap-5 sm:grid sm:grid-cols-2">
-                                                        <div className="pr-8 sm:pr-5">
-                                                            <p className="text-base font-semibold text-gray-900">
-                                                                {item.attributes?.title}
-                                                            </p>
-                                                            <p className="mx-0 mt-1 mb-0 text-sm text-gray-400">
-                                                                {
-                                                                    item.attributes
-                                                                        ?.category
-                                                                }
-                                                            </p>
-                                                        </div>
-
-                                                        <div className="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                                                            <p className="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
-                                                                {item.attributes?.price.toLocaleString(
-                                                                    "en-US",
+                                                    <div className="relative flex flex-1 flex-col justify-between">
+                                                        <div className="sm:col-gap-5 sm:grid sm:grid-cols-2">
+                                                            <div className="pr-8 sm:pr-5">
+                                                                <p className="text-base font-semibold text-gray-900">
                                                                     {
-                                                                        style: "currency",
-                                                                        currency: "INR",
+                                                                        item.attributes
+                                                                            ?.title
                                                                     }
-                                                                )}
-                                                            </p>
+                                                                </p>
+                                                                <p className="mx-0 mt-1 mb-0 text-sm text-gray-400">
+                                                                    {
+                                                                        item.attributes
+                                                                            ?.category
+                                                                    }
+                                                                </p>
+                                                            </div>
+
+                                                            <div className="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
+                                                                <p className="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
+                                                                    {item.attributes?.price.toLocaleString(
+                                                                        "en-US",
+                                                                        {
+                                                                            style: "currency",
+                                                                            currency:
+                                                                                "INR",
+                                                                        }
+                                                                    )}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
+                                                            <button
+                                                                onClick={() => {
+                                                                    context.removeFromCart(
+                                                                        item,
+                                                                        index
+                                                                    );
+                                                                }}
+                                                                type="button"
+                                                                className="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"
+                                                            >
+                                                                <svg
+                                                                    className="h-5 w-5"
+                                                                    viewBox="0 0 48 48"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                >
+                                                                    <path
+                                                                        d="M0 0h48v48H0V0z"
+                                                                        fill="none"
+                                                                    />
+                                                                    <path d="M12 38c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V14H12v24zm4.93-14.24l2.83-2.83L24 25.17l4.24-4.24 2.83 2.83L26.83 28l4.24 4.24-2.83 2.83L24 30.83l-4.24 4.24-2.83-2.83L21.17 28l-4.24-4.24zM31 8l-2-2H19l-2 2h-7v4h28V8z" />
+                                                                    <path
+                                                                        d="M0 0h48v48H0z"
+                                                                        fill="none"
+                                                                    />
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
-
-                                                    <div className="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
-                                                        <button
-                                                            onClick={() => {
-                                                                context.removeFromCart(
-                                                                    item,
-                                                                    index
-                                                                );
-                                                            }}
-                                                            type="button"
-                                                            className="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"
-                                                        >
-                                                            <svg
-                                                                className="h-5 w-5"
-                                                                viewBox="0 0 48 48"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                            >
-                                                                <path
-                                                                    d="M0 0h48v48H0V0z"
-                                                                    fill="none"
-                                                                />
-                                                                <path d="M12 38c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V14H12v24zm4.93-14.24l2.83-2.83L24 25.17l4.24-4.24 2.83 2.83L26.83 28l4.24 4.24-2.83 2.83L24 30.83l-4.24 4.24-2.83-2.83L21.17 28l-4.24-4.24zM31 8l-2-2H19l-2 2h-7v4h28V8z" />
-                                                                <path
-                                                                    d="M0 0h48v48H0z"
-                                                                    fill="none"
-                                                                />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        );
-                                    })}
+                                                </li>
+                                            );
+                                        })}
                                 </ul>
                             </div>
 

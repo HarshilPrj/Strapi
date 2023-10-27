@@ -50,7 +50,7 @@ const Header = () => {
                             href="/products/checkout"
                             className="mr-5 hover:text-red-600"
                         >
-                            Cart ({context.cart.length})
+                            Cart ({context && context.cart && context.cart.length})
                         </Link>
                     </nav>
                     <Link href={"/login"}>
