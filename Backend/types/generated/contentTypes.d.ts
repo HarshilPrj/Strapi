@@ -362,6 +362,147 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiAddressAddress extends Schema.CollectionType {
+  collectionName: 'addresses';
+  info: {
+    singularName: 'address';
+    pluralName: 'addresses';
+    displayName: 'address';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address_line_1: Attribute.Text & Attribute.Required;
+    address_line_2: Attribute.Text;
+    city: Attribute.String & Attribute.Required;
+    state: Attribute.String & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    pincode: Attribute.Integer & Attribute.Required;
+    user: Attribute.Relation<
+      'api::address.address',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrders08Orders08 extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'orders08';
+    pluralName: 'orders';
+    displayName: 'Orders';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email & Attribute.Required;
+    payment_info: Attribute.JSON & Attribute.Required;
+    products: Attribute.JSON & Attribute.Required;
+    address: Attribute.Text & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    transections_id: Attribute.String;
+    amount: Attribute.Integer & Attribute.Required;
+    status: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Pending'>;
+    orderId: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::orders08.orders08',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::orders08.orders08',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+        maxLength: 50;
+      }>;
+    slug: Attribute.UID &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+        maxLength: 110;
+      }>;
+    description: Attribute.Text;
+    image: Attribute.Media & Attribute.Required;
+    category: Attribute.Enumeration<
+      ['T-Shirt', 'Shirt', 'Mug', 'Shoes', 'Electronics', 'Sports']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'T-Shirt'>;
+    size: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 6;
+      }>;
+    colors: Attribute.Enumeration<
+      ['Red', 'Black', 'Yellow', 'Green', 'Blue', 'White']
+    > &
+      Attribute.Required;
+    price: Attribute.Integer & Attribute.Required;
+    qty: Attribute.Integer & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -681,147 +822,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAddressAddress extends Schema.CollectionType {
-  collectionName: 'addresses';
-  info: {
-    singularName: 'address';
-    pluralName: 'addresses';
-    displayName: 'address';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    address_line_1: Attribute.Text & Attribute.Required;
-    address_line_2: Attribute.Text;
-    city: Attribute.String & Attribute.Required;
-    state: Attribute.String & Attribute.Required;
-    country: Attribute.String & Attribute.Required;
-    pincode: Attribute.Integer & Attribute.Required;
-    user: Attribute.Relation<
-      'api::address.address',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::address.address',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::address.address',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiOrders08Orders08 extends Schema.CollectionType {
-  collectionName: 'orders';
-  info: {
-    singularName: 'orders08';
-    pluralName: 'orders';
-    displayName: 'Orders';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    email: Attribute.Email & Attribute.Required;
-    payment_info: Attribute.JSON & Attribute.Required;
-    products: Attribute.JSON & Attribute.Required;
-    address: Attribute.Text & Attribute.Required;
-    name: Attribute.String & Attribute.Required;
-    transections_id: Attribute.String;
-    amount: Attribute.Integer & Attribute.Required;
-    status: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'Pending'>;
-    orderId: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::orders08.orders08',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::orders08.orders08',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
-  info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'product';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 3;
-        maxLength: 50;
-      }>;
-    slug: Attribute.UID &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 3;
-        maxLength: 110;
-      }>;
-    description: Attribute.Text;
-    image: Attribute.Media & Attribute.Required;
-    category: Attribute.Enumeration<
-      ['T-Shirt', 'Shirt', 'Mug', 'Shoes', 'Electronics', 'Sports']
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<'T-Shirt'>;
-    size: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 6;
-      }>;
-    colors: Attribute.Enumeration<
-      ['Red', 'Black', 'Yellow', 'Green', 'Blue', 'White']
-    > &
-      Attribute.Required;
-    price: Attribute.Integer & Attribute.Required;
-    qty: Attribute.Integer & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -832,15 +832,15 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::address.address': ApiAddressAddress;
+      'api::orders08.orders08': ApiOrders08Orders08;
+      'api::product.product': ApiProductProduct;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::address.address': ApiAddressAddress;
-      'api::orders08.orders08': ApiOrders08Orders08;
-      'api::product.product': ApiProductProduct;
     }
   }
 }

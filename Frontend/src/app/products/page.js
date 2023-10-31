@@ -21,7 +21,7 @@ const Products = () => {
         <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-wrap -m-4">
-                    {data ? (
+                    {data.length ? (
                         data?.map((item, index) => {
                             const handleChangeColor = () => {
                                 if (item.attributes?.colors === "Black") {
@@ -77,7 +77,9 @@ const Products = () => {
                             );
                         })
                     ) : (
-                        <h1>Data Not Fount</h1>
+                        <div className="p-4 w-[100%] flex justify-center">
+                            <h1 className="text-xl">Data Not Found</h1>
+                        </div>
                     )}
                 </div>
             </div>
